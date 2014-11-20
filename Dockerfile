@@ -14,3 +14,8 @@ ADD install_python.sh /root/install_python.sh
 RUN chmod 755 /root/install_python.sh
 RUN /root/install_python.sh
 
+RUN /usr/local/bin/pip install supervisor
+RUN mkdir -p /etc/supervisor.d
+ADD supervisord.init /etc/init.d/supervisord
+ADD supervisord.conf /etc/supervisord.conf
+RUN chmod 755 /etc/init.d/supervisord
